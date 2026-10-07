@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SEARCH</title>
+<title>🔍 SEARCH</title>
 
 <style>
     * {
@@ -229,11 +229,6 @@ function renderHistory() {
         copyButton.addEventListener("click", async () => {
             try {
                 await navigator.clipboard.writeText(word);
-                copyButton.textContent = "✓ Copied";
-
-                setTimeout(() => {
-                    copyButton.textContent = "📋 Copy";
-                }, 1000);
             } catch {
                 const textarea = document.createElement("textarea");
                 textarea.value = word;
@@ -241,13 +236,13 @@ function renderHistory() {
                 textarea.select();
                 document.execCommand("copy");
                 textarea.remove();
-
-                copyButton.textContent = "✓ Copied";
-
-                setTimeout(() => {
-                    copyButton.textContent = "📋 Copy";
-                }, 1000);
             }
+
+            copyButton.textContent = "✓ Copied";
+
+            setTimeout(() => {
+                copyButton.textContent = "📋 Copy";
+            }, 1000);
         });
 
         item.appendChild(wordElement);
@@ -300,7 +295,7 @@ function searchLexin() {
     saveHistory(word);
 
     window.location.href =
-        "https://lexin.se/" +
+        "https://lexin.se/?word=" +
         encodeURIComponent(word);
 }
 
