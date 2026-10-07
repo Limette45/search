@@ -145,6 +145,14 @@
     </div>
 
     <div class="search-section">
+        <div class="label">🇩🇪 📖 Collins</div>
+        <div class="search-row">
+            <input id="collinsInput" type="text" placeholder="Enter a German word">
+            <button onclick="searchCollins()">🔍 Search</button>
+        </div>
+    </div>
+
+    <div class="search-section">
         <div class="label">📖 Wiki</div>
         <div class="search-row">
             <input id="wikiInput" type="text" placeholder="Enter a word">
@@ -263,6 +271,18 @@ function searchDictionary() {
         encodeURIComponent(word);
 }
 
+function searchCollins() {
+    const word = document.getElementById("collinsInput").value.trim();
+
+    if (!word) return;
+
+    saveHistory(word);
+
+    window.location.href =
+        "https://www.collinsdictionary.com/dictionary/german-english/" +
+        encodeURIComponent(word);
+}
+
 function searchWiki() {
     const word = document.getElementById("wikiInput").value.trim();
 
@@ -302,6 +322,12 @@ function searchLexin() {
 document.getElementById("dictionaryInput").addEventListener("keydown", event => {
     if (event.key === "Enter") {
         searchDictionary();
+    }
+});
+
+document.getElementById("collinsInput").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        searchCollins();
     }
 });
 
