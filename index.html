@@ -153,6 +153,14 @@
     </div>
 
     <div class="search-section">
+        <div class="label">🇸🇪 📘 Lexin</div>
+        <div class="search-row">
+            <input id="lexinInput" type="text" placeholder="Enter a word">
+            <button onclick="searchLexin()">🔍 Search</button>
+        </div>
+    </div>
+
+    <div class="search-section">
         <div class="label">📖 Wiki</div>
         <div class="search-row">
             <input id="wikiInput" type="text" placeholder="Enter a word">
@@ -272,6 +280,18 @@ function searchDatabase() {
         encodeURIComponent(word);
 }
 
+function searchLexin() {
+    const word = document.getElementById("lexinInput").value.trim();
+
+    if (!word) return;
+
+    saveHistory(word);
+
+    window.location.href =
+        "https://lexin.se/" +
+        encodeURIComponent(word);
+}
+
 function searchWiki() {
     const word = document.getElementById("wikiInput").value.trim();
 
@@ -293,6 +313,12 @@ document.getElementById("dictionaryInput").addEventListener("keydown", event => 
 document.getElementById("databaseInput").addEventListener("keydown", event => {
     if (event.key === "Enter") {
         searchDatabase();
+    }
+});
+
+document.getElementById("lexinInput").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        searchLexin();
     }
 });
 
